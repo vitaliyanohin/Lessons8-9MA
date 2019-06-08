@@ -4,7 +4,6 @@ public class ArrayListTest<T> implements List<T> {
   private int arraySize;
   private static final int DEFAULT_CAPACITY = 10;
 
-
   public ArrayListTest() {
     arrayList = (T[]) new Object[DEFAULT_CAPACITY];
   }
@@ -51,7 +50,6 @@ public class ArrayListTest<T> implements List<T> {
     checkException(index);
     return arrayList[index];
   }
-
 
   @Override
   public void set(T value, int index) {
