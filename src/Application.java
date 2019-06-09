@@ -1,22 +1,20 @@
 public class Application {
 
   public static void main(String[] args) {
-    ArrayListTest<Integer> arrayListTestOne = new ArrayListTest<>();
-    ArrayListTest<Integer> arrayListTestTwo = new ArrayListTest<>(2);
-    arrayListTestTwo.add(2);
-    arrayListTestTwo.add(3);
-    for (int i = 0; i < 11; i++) {
-      arrayListTestOne.add(i);
+    LinkedListTest<Integer> linkedListTest = new LinkedListTest<>();
+    linkedListTest.add(2);
+    linkedListTest.add(3);
+    linkedListTest.add(4);
+    linkedListTest.add(5);
+    System.out.println(linkedListTest.get(0));
+    System.out.println(linkedListTest.get(1));
+    System.out.println(linkedListTest.get(2));
+    System.out.println(linkedListTest.get(3));
+    linkedListTest.set(11, 3);
+    System.out.println("_____________");
+    for (int i = 0; i < linkedListTest.size(); i++) {
+      System.out.println(linkedListTest.get(i));
     }
-    for (int i = 0; i < arrayListTestOne.size(); i++) {
-      System.out.println(arrayListTestOne.get(i));
-    }
-    System.out.println("________________");
-    System.out.println(arrayListTestOne.size());
-    arrayListTestOne.add(10);
-    for (int i = 0; i < arrayListTestOne.size(); i++) {
-      System.out.println(arrayListTestOne.get(i));
-    }
-    System.out.println(arrayListTestOne.isEmpty());
   }
 }
+
