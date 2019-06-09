@@ -23,7 +23,9 @@ public class LinkedListTest<T> implements List<T> {
     last = newNode;
     if (lastNode == null) {
       first = newNode;
-    } else lastNode.next = newNode;
+    } else {
+      lastNode.next = newNode;
+    }
     size++;
   }
 
