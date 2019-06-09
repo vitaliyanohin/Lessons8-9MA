@@ -18,30 +18,30 @@ public class LinkedListTest<T> implements List<T> {
 
   @Override
   public void add(T value) {
-    Node<T> l = last;
-    Node<T> newNode = new Node<T>(l, value, null);
+    Node<T> lastNode = last;
+    Node<T> newNode = new Node<T>(lastNode, value, null);
     last = newNode;
-    if (l == null) {
+    if (lastNode == null) {
       first = newNode;
-    } else l.next = newNode;
+    } else lastNode.next = newNode;
     size++;
   }
 
   @Override
   public void add(T value, int index) {
     checkExceptionForAdd(index);
-    Node<T> pref = null;
+    Node<T> prev = null;
     Node<T> next = getNode(index);
     if (index == 0) {
-      Node<T> newNode = new Node<>(pref, value, next);
+      Node<T> newNode = new Node<>(prev, value, next);
       next.prev = newNode;
       first = newNode;
       size++;
     }
     if (index != 0 & index < size) {
-      pref = getNode(index - 1);
-      Node<T> newNode = new Node<>(pref, value, next);
-      pref.next = newNode;
+      prev = getNode(index - 1);
+      Node<T> newNode = new Node<>(prev, value, next);
+      prev.next = newNode;
       next.prev = newNode;
       size++;
     }
@@ -61,22 +61,22 @@ public class LinkedListTest<T> implements List<T> {
   @Override
   public T get(int index) {
     checkException(index);
-    Node nextStepsNode = first;
-    Node nextStepsNode2;
-    int serchNode = 0;
+    Node stepNode = first;
+    Node nextStepNode;
+    int searchNode = 0;
     if (index == 0) {
       return first.item;
     }
     if (index == size - 1) {
       return last.item;
     }
-    while (serchNode < index) {
-      nextStepsNode2 = nextStepsNode.next;
-      nextStepsNode = nextStepsNode2;
-      if (serchNode == (index - 1)) {
-        return (T) nextStepsNode.item;
+    while (searchNode < index) {
+      nextStepNode = stepNode.next;
+      stepNode = nextStepNode;
+      if (searchNode == (index - 1)) {
+        return (T) stepNode.item;
       }
-      serchNode++;
+      searchNode++;
     }
     return null;
   }
@@ -141,25 +141,26 @@ public class LinkedListTest<T> implements List<T> {
 
   private Node<T> getNode(int index) {
     checkException(index);
-    Node nextStepsNode = first;
-    Node nextStepsNode2;
-    int serchNode = 0;
+    Node stepNode = first;
+    Node nextStepNode;
+    int searchNode = 0;
     if (index == 0) {
       return first;
     }
     if (index == size - 1) {
       return last;
     }
-    while (serchNode < index) {
-      nextStepsNode2 = nextStepsNode.next;
-      nextStepsNode = nextStepsNode2;
-      if (serchNode == (index - 1)) {
-        return nextStepsNode;
+    while (searchNode < index) {
+      nextStepNode = stepNode.next;
+      stepNode = nextStepNode;
+      if (searchNode == (index - 1)) {
+        return stepNode;
       }
-      serchNode++;
+      searchNode++;
     }
     return null;
   }
+
   private void checkException(int index) {
     if (index >= size || index < 0) {
       try {
@@ -169,6 +170,7 @@ public class LinkedListTest<T> implements List<T> {
       }
     }
   }
+
   private void checkExceptionForAdd(int index) {
     if (index > size || index < 0) {
       try {
