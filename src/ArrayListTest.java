@@ -57,9 +57,6 @@ public class ArrayListTest<T> implements List<T> {
     if (index < size()) {
       arrayList[index] = value;
     }
-    if (index == size()) {
-      add(value);
-    }
   }
 
   @Override
@@ -105,21 +102,13 @@ public class ArrayListTest<T> implements List<T> {
 
   private void checkException(int index) {
     if (index >= arraySize || index < 0) {
-      try {
-        throw new ArrayException("ArrayIndexOutOfBoundsException");
-      } catch (ArrayException e) {
-        e.printStackTrace();
-      }
+      throw new ArrayIndexOutOfBoundsException();
     }
   }
 
-  private void checkExceptionForAdd(int index) {
-    if (index > arraySize || index < 0) {
-      try {
-        throw new ArrayException("ArrayIndexOutOfBoundsException");
-      } catch (ArrayException e) {
-        e.printStackTrace();
+    private void checkExceptionForAdd(int index){
+      if (index > arraySize || index < 0) {
+        throw new ArrayIndexOutOfBoundsException();
       }
     }
   }
-}
