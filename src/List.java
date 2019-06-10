@@ -12,7 +12,7 @@ public interface List<T> {
 
   T remove(int index);
 
-  T remove(T t); //
+  T remove(T t);
 
   int size();
 
