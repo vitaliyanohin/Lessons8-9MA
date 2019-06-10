@@ -5,9 +5,9 @@ public class LinkedListTest<T> implements List<T> {
   private int size;
 
   private static class Node<T> {
-   private T item;
-   private Node<T> next;
-   private Node<T> prev;
+    private T item;
+    private Node<T> next;
+    private Node<T> prev;
 
     Node(Node<T> prev, T element, Node<T> next) {
       this.item = element;
@@ -63,24 +63,7 @@ public class LinkedListTest<T> implements List<T> {
   @Override
   public T get(int index) {
     checkException(index);
-    Node stepNode = first;
-    Node nextStepNode;
-    int searchNode = 0;
-    if (index == 0) {
-      return first.item;
-    }
-    if (index == size - 1) {
-      return last.item;
-    }
-    while (searchNode < index) {
-      nextStepNode = stepNode.next;
-      stepNode = nextStepNode;
-      if (searchNode == (index - 1)) {
-        return (T) stepNode.item;
-      }
-      searchNode++;
-    }
-    return null;
+    return getNode(index).item;
   }
 
   @Override
@@ -98,21 +81,20 @@ public class LinkedListTest<T> implements List<T> {
     checkException(index);
     T oldElement = get(index);
     if (index == 0) {
-      getNode(index).item = null;
-      getNode(index + 1).prev = null;
-      first = getNode(index + 1);
+      first = getNode(1);
+      first.prev = null;
       size--;
     }
     if (index == size - 1) {
-      getNode(index).item = null;
-      getNode(index - 1).next = null;
       last = getNode(index - 1);
+      last.next = null;
       size--;
     }
     if (index != 0 & index < size - 1) {
-      getNode(index).item = null;
-      getNode(index - 1).next = getNode(index + 1);
-      getNode(index + 1).prev = getNode(index - 1);
+      Node<T> changePrev = getNode(index - 1);
+      Node<T> changeNext = getNode(index + 1);
+      changePrev.next = changeNext;
+      changeNext.prev = changePrev;
       size--;
     }
     return oldElement;
@@ -122,7 +104,7 @@ public class LinkedListTest<T> implements List<T> {
   public T remove(T t) {
     for (int i = 0; i < size(); i++) {
       if (get(i).equals(t)) {
-       return remove(i);
+        return remove(i);
       }
     }
     return null;
@@ -162,11 +144,11 @@ public class LinkedListTest<T> implements List<T> {
 
   private void checkException(int index) {
     if (index >= size || index < 0) {
-        throw new ArrayException("ArrayIndexOutOfBoundsException");
+      throw new ArrayIndexOutOfBoundsException();
     }
   }
 
-  private void checkExceptionForAdd(int index)  {
+  private void checkExceptionForAdd(int index) {
     if (index > size || index < 0) {
       throw new ArrayIndexOutOfBoundsException();
     }
