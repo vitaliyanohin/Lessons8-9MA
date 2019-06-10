@@ -123,12 +123,10 @@ public class LinkedListTest<T> implements List<T> {
     T oldElement = null;
     for (int i = 0; i < size(); i++) {
       if (get(i).equals(t)) {
-        oldElement = get(i);
-        remove(i);
-        break;
+       return remove(i);
       }
     }
-    return oldElement;
+    return null;
   }
 
   @Override
