@@ -71,15 +71,12 @@ public class ArrayListTest<T> implements List<T> {
 
   @Override
   public T remove(T t) {
-    T oldElement = null;
     for (int i = 0; i < size(); i++) {
       if (arrayList[i].equals(t)) {
-        oldElement = arrayList[i];
-        remove(i);
-        break;
+        return remove(i);
       }
     }
-    return oldElement;
+    return null;
   }
 
   @Override
@@ -106,9 +103,9 @@ public class ArrayListTest<T> implements List<T> {
     }
   }
 
-    private void checkExceptionForAdd(int index){
-      if (index > arraySize || index < 0) {
-        throw new ArrayIndexOutOfBoundsException();
-      }
+  private void checkExceptionForAdd(int index) {
+    if (index > arraySize || index < 0) {
+      throw new ArrayIndexOutOfBoundsException();
     }
   }
+}
