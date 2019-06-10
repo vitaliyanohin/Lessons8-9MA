@@ -1,4 +1,4 @@
-public class ArrayException extends Exception {
+public class ArrayException extends ArrayIndexOutOfBoundsException {
 
   public ArrayException(String message) {
     super(message);

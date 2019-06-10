@@ -162,21 +162,13 @@ public class LinkedListTest<T> implements List<T> {
 
   private void checkException(int index) {
     if (index >= size || index < 0) {
-      try {
         throw new ArrayException("ArrayIndexOutOfBoundsException");
-      } catch (ArrayException e) {
-        e.printStackTrace();
-      }
     }
   }
 
-  private void checkExceptionForAdd(int index) {
+  private void checkExceptionForAdd(int index)  {
     if (index > size || index < 0) {
-      try {
-        throw new ArrayException("ArrayIndexOutOfBoundsException");
-      } catch (ArrayException e) {
-        e.printStackTrace();
-      }
+      throw new ArrayIndexOutOfBoundsException();
     }
   }
 }
