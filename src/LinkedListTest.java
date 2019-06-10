@@ -120,7 +120,6 @@ public class LinkedListTest<T> implements List<T> {
 
   @Override
   public T remove(T t) {
-    T oldElement = null;
     for (int i = 0; i < size(); i++) {
       if (get(i).equals(t)) {
        return remove(i);
