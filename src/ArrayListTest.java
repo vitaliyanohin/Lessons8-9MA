@@ -54,9 +54,7 @@ public class ArrayListTest<T> implements List<T> {
   @Override
   public void set(T value, int index) {
     checkException(index);
-    if (index < size()) {
       arrayList[index] = value;
-    }
   }
 
   @Override
