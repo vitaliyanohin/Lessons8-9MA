@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class LinkedListTest<T> implements List<T> {
 
   private Node<T> first;
@@ -107,7 +109,7 @@ public class LinkedListTest<T> implements List<T> {
         return remove(i);
       }
     }
-    return null;
+    throw new NoSuchElementException();
   }
 
   @Override
@@ -139,7 +141,7 @@ public class LinkedListTest<T> implements List<T> {
       }
       searchNode++;
     }
-    return null;
+    throw new NoSuchElementException();
   }
 
   private void checkException(int index) {
