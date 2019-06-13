@@ -28,6 +28,9 @@ public class ArrayListTest<T> implements List<T> {
   public void add(T value, int index) {
     checkExceptionForAdd(index);
     if (index < size()) {
+      if(size() == arrayList.length) {
+        changeSizeArray();
+      }
       System.arraycopy(arrayList, index, arrayList, index + 1, arrayList.length - index - 1);
       arrayList[index] = value;
       arraySize++;
